@@ -27,7 +27,7 @@ button.addEventListener('click', () => {
 const form = document.querySelector('form#send-alert');
 if (form) {
     form.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent form from submitting and refreshing the page
+        event.preventDefault();
         const message = form.querySelector('input[name="alert"]');
         if (message) {
             alert(message.value);

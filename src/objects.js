@@ -14,22 +14,15 @@
 //   ]);
 //   => ['Gale Dekarios', 'Wyll Ravengard', 'Karlach Cliffgate'];
 function getNames(people) {
-  if (!Array.isArray(people)) {
-    return 'Invalid input. Expected an array.';
-  }
+  const names = [];
 
-  return people.map(person => {
-    if (
-        typeof person !== 'object' ||
-        person === null ||
-        typeof person.firstName !== 'string' ||
-        typeof person.lastName !== 'string'
-    ) {
-      return 'Invalid person object.';
-    }
-    return `${person.firstName} ${person.lastName}`
+  people.forEach(person => {
+    names.push(`${person.firstName} ${person.lastName}`);
   });
+
+  return names;
 }
+
 // Given an object representing a person, return their full name (first name and last name).
 // You MUST use object destructuring in your solution.
 //
@@ -40,15 +33,7 @@ function getNames(people) {
 //   getName({ firstName: 'Gale', lastName: 'Dekarios', location: 'Waterdeep' });
 //   => 'Gale Dekarios'
 function getNameUsingDestructuring(person) {
-  const {firstName, lastName} = person;
-  if (
-      typeof person !== 'object' ||
-      person === null ||
-      typeof person.firstName !== 'string' ||
-      typeof person.lastName !== 'string'
-  ) {
-    return 'Invalid person object.';
-  }
+  const { firstName, lastName } = person;
   return `${firstName} ${lastName}`;
 }
 // Given an array of objects representing people, return a new array of the
@@ -69,10 +54,13 @@ function getNameUsingDestructuring(person) {
 //     { firstName: 'Astarion', lastName: 'Ancunin', location: "Baldur's Gate" }
 //   ];
 function getPeopleByLocation(people, location) {
-  if (!Array.isArray(people)) {
-    return 'Invalid input. Expected an array.';
-  }
-  return people.filter(person => person.location === location);
+  const matchingPeople = [];
+  people.forEach(person => {
+    if (person.location === location) {
+      matchingPeople.push(person);
+    }
+  });
+  return matchingPeople;
 }
 
 // Translate a phrase to pirate talk.
